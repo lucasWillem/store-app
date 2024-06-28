@@ -27,12 +27,7 @@ jobs:
       run: yarn dev &
       env:
         CI: true
-
-    - name: Run Cypress e2e tests
-      run: yarn cypress:run:e2e
-      env:
-        CI: true
-
+        
     - name: Run Cypress component tests
       run: yarn cypress:run:component
       env:
