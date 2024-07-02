@@ -1,4 +1,3 @@
-import "./App.css";
 import { Router } from "./routing/router";
 
 function App() {
