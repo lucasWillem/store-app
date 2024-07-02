@@ -9,8 +9,6 @@ interface CartItem {
   image: string;
 }
 
-//TODO: co-locate models with their respective components
-
 export interface ShoppingCartModel {
   cartItems: CartItem[];
   addCartItem: Action<ShoppingCartModel, CartItem>;
