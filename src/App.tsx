@@ -1,7 +1,7 @@
-import { Router } from "./routing/router";
+import { Router } from "@/routing";
 
 function App() {
-  return <Router NavBar={undefined} />;
+  return <Router />;
 }
 
 export default App;
