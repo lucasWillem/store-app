@@ -1,9 +1,13 @@
-import React from "react";
 import App from "./App";
+import { mount } from "@cypress/react18";
+import { AppProvider } from "@/components/templates/AppProvider";
 
 describe("<App />", () => {
   it("renders", () => {
-    // see: https://on.cypress.io/mounting-react
-    cy.mount(<App />);
+    mount(
+      <AppProvider>
+        <App data-cy="App" />
+      </AppProvider>,
+    );
   });
 });
