@@ -1,1 +1,1 @@
-export { default as AppWrapper } from "./AppWrapper.layout";
+export { default as AppWrapper } from "./AppWrapper.template";
