@@ -146,10 +146,7 @@ const LoginForm: FC = () => {
         <Button variant="outlined" disabled={!isValid} type="submit">
           Log In
         </Button>
-        <Button
-          onClick={() => console.log("nativate to sign up")}
-          color="secondary"
-        >
+        <Button onClick={() => navigate(RoutePaths.SignUp)} color="secondary">
           {`I don't have an account`}
         </Button>
       </StyledButtonsContainer>
