@@ -22,6 +22,7 @@ type Response = StrapiServerResponse<{
     createdAt: Date;
     updatedAt: Date;
   } | null;
+  error?: CustomStrapiError;
 }>;
 
 export const mutationKey = ["SubmitLogin"];
@@ -31,6 +32,7 @@ async function submitLogin(url: string, data: Data): Promise<Response> {
     const response = await axios.post<Response>(url, data);
     return response.data;
   } catch (error) {
+    console.log(error);
     return handleNetworkError(error as CustomStrapiError);
   }
 }

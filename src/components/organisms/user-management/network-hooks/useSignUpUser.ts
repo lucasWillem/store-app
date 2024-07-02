@@ -23,6 +23,7 @@ type Response = StrapiServerResponse<{
     createdAt: Date;
     updatedAt: Date;
   } | null;
+  error?: CustomStrapiError;
 }>;
 
 export const mutationKey = ["SignUpUser"];
