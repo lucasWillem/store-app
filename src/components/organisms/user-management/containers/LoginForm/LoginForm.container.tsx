@@ -15,6 +15,7 @@ import { RoutePaths } from "@/global";
 
 import { useSubmitLogin } from "../../network-hooks/useSubmitLogin";
 import { AuthenticationEndPoints } from "../../constants";
+import { AlertSeverity } from "@/components/atoms/CustomAlert/state/alert-model";
 
 export interface LoginFormInputs {
   email: string;
@@ -38,13 +39,22 @@ const LoginForm: FC = () => {
 
   const storeUser = useStoreActions((actions) => actions.user.storeUser);
 
+  const configureAlert = useStoreActions(
+    (actions) => actions.alert.configureAlert,
+  );
+
   const navigate = useNavigate();
 
   const { mutate: loginUser } = useSubmitLogin({
     url: AuthenticationEndPoints.Login,
     options: {
       onError: (error) => {
-        console.error(error);
+        const { message } = error as Error;
+        configureAlert({
+          isVisible: true,
+          message: message,
+          severity: AlertSeverity.Error,
+        });
       },
       onSuccess: (userData) => {
         const { jwt, user } = userData;
