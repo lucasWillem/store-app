@@ -1,9 +1,9 @@
 import { persist } from "easy-peasy";
 
-import type { StoreModel } from "./types";
+import { type StoreModel } from "./types";
 
-import productsModel from "./products-model";
-import shoppingCartModel from "./shoppingcart-model";
+import productsModel from "@/components/organisms/store-management/state/products-model";
+import shoppingCartModel from "@/components/organisms/shopping-cart-management/state/shoppingcart-model";
 
 export const models: StoreModel = {
   products: persist(productsModel),
