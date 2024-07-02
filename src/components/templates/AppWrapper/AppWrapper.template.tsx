@@ -2,16 +2,13 @@ import { memo, ReactNode, FC, CSSProperties } from "react";
 
 import { StyledAppWrapper } from "./AppWrapper.styles";
 
-interface ScreenWrapperProps {
+interface AppWrapperProps {
   children: ReactNode;
   containerStyle?: CSSProperties;
 }
 
-const ScreenTemplate: FC<ScreenWrapperProps> = ({
-  children,
-  containerStyle,
-}) => {
+const AppWrapper: FC<AppWrapperProps> = ({ children, containerStyle }) => {
   return <StyledAppWrapper style={containerStyle}>{children}</StyledAppWrapper>;
 };
 
-export default memo(ScreenTemplate);
+export default memo(AppWrapper);
