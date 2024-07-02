@@ -21,11 +21,16 @@ const LoginPage = lazy(() =>
   import("@/pages").then((module) => ({ default: module.LoginPage })),
 );
 
-const Router: FC = () => {
+interface RouterProps {
+  children?: React.ReactNode;
+}
+
+const Router: FC<RouterProps> = ({ children }) => {
   const isLoggedIn = useCheckIfLoggedIn();
 
   return (
     <BrowserRouter>
+      {children}
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
           <Route element={<PrivateRoutes isAuthenticated={isLoggedIn} />}>
