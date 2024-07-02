@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 const StorePage: FC = () => {
-  return null;
+  return <p>store goes here</p>;
 };
 
 export default StorePage;
