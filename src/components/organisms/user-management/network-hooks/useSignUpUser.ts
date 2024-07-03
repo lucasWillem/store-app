@@ -8,11 +8,11 @@ import {
   type CustomMutationOptions,
 } from "@/networking";
 
-type Data = {
+interface Data {
   username: string;
   email: string;
   password: string;
-};
+}
 
 type Response = StrapiServerResponse<{
   jwt?: string;

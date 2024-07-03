@@ -4,9 +4,9 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { queryClient } from "./queryClient";
 
-export type NetworkProviderProps = {
+export interface NetworkProviderProps {
   children: ReactNode;
-};
+}
 
 const _NetworkProvider: FC<NetworkProviderProps> = ({ children }) => (
   <QueryClientProvider client={queryClient}>

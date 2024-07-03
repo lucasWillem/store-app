@@ -7,10 +7,11 @@ interface PageWrapperProps {
   containerStyle?: CSSProperties;
 }
 
-const PageWrapper: FC<PageWrapperProps> = ({ children, containerStyle }) => {
+const _PageWrapper: FC<PageWrapperProps> = ({ children, containerStyle }) => {
   return (
     <StyledPageWrapper style={containerStyle}>{children}</StyledPageWrapper>
   );
 };
 
-export default memo(PageWrapper);
+const PageWrapper = memo(_PageWrapper);
+export default PageWrapper;

@@ -10,7 +10,7 @@ interface AppWrapperProps {
   children: ReactNode;
 }
 
-const AppWrapper: FC<AppWrapperProps> = ({ children }) => {
+const _AppWrapper: FC<AppWrapperProps> = ({ children }) => {
   const { isVisible, message, severity } = useStoreState(
     (state) => state.alert.alertConfig,
   );
@@ -43,4 +43,5 @@ const AppWrapper: FC<AppWrapperProps> = ({ children }) => {
   );
 };
 
-export default memo(AppWrapper);
+const AppWrapper = memo(_AppWrapper);
+export default AppWrapper;

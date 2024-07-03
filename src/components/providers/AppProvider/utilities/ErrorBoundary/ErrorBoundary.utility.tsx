@@ -37,7 +37,7 @@ const ErrorFallback: FC<ErrorFallbackProps> = ({
   );
 };
 
-const ErrorBoundary: FC<ErrorBoundaryProps> = ({ children }) => {
+const _ErrorBoundary: FC<ErrorBoundaryProps> = ({ children }) => {
   return (
     <StyledErrorBoundaryWrapper>
       <ReactErrorBoundary
@@ -50,4 +50,5 @@ const ErrorBoundary: FC<ErrorBoundaryProps> = ({ children }) => {
   );
 };
 
-export default memo(ErrorBoundary);
+const ErrorBoundary = memo(_ErrorBoundary);
+export default ErrorBoundary;

@@ -11,7 +11,7 @@ export interface AlertProps extends Omit<MuiAlertProps, "color"> {
   severity?: AlertSeverity;
 }
 
-const CustomAlert: FC<AlertProps> = ({
+const _CustomAlert: FC<AlertProps> = ({
   isVisible,
   handleOnModalClose,
   message,
@@ -36,4 +36,5 @@ const CustomAlert: FC<AlertProps> = ({
   );
 };
 
-export default memo(CustomAlert);
+const CustomAlert = memo(_CustomAlert);
+export default CustomAlert;
