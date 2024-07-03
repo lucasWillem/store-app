@@ -43,29 +43,39 @@ const LoginForm: FC = () => {
     (actions) => actions.alert.configureAlert,
   );
 
+  const configureLoader = useStoreActions(
+    (actions) => actions.loader.configureLoader,
+  );
+
   const navigate = useNavigate();
 
   const { mutate: loginUser } = useSubmitLogin({
     url: AuthenticationEndPoints.Login,
     options: {
-      onError: (error) => {
-        const { message } = error as Error;
-        configureAlert({
-          isVisible: true,
-          message: message,
-          severity: AlertSeverity.Error,
-        });
+      onMutate: () => {
+        configureLoader({ isVisible: true });
       },
-      onSuccess: (userData) => {
-        const { jwt, user } = userData;
+      onSettled: (data, error) => {
+        configureLoader({ isVisible: false });
 
-        if (!jwt || !user) return;
+        if (error) {
+          const { message } = error as Error;
+          configureAlert({
+            isVisible: true,
+            message: message,
+            severity: AlertSeverity.Error,
+          });
+        } else if (data) {
+          const { jwt, user } = data;
 
-        storeUser({
-          jwt,
-          username: user.username,
-        });
-        navigate(RoutePaths.Store);
+          if (!jwt || !user) return;
+
+          storeUser({
+            jwt,
+            username: user.username,
+          });
+          navigate(RoutePaths.Store);
+        }
       },
     },
   });
