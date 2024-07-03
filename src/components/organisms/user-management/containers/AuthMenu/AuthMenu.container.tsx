@@ -30,6 +30,7 @@ const AuthMenu: FC<AuthMenuProps> = ({ containerStyle }) => {
   };
 
   const handleLogout = () => {
+    handleClose();
     logout();
     navigate(RoutePaths.Login);
   };

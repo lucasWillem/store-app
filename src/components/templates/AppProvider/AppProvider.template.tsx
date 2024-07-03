@@ -7,11 +7,11 @@ import { store } from "@/redux";
 import { AppWrapper } from "@/components/templates/AppWrapper";
 import { NetworkProvider } from "@/networking";
 
-interface ScreenWrapperProps {
+interface AppProviderProps {
   children: ReactNode;
 }
 
-const ScreenTemplate: FC<ScreenWrapperProps> = ({ children }) => {
+const AppProvider: FC<AppProviderProps> = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <StoreProvider store={store}>
@@ -23,4 +23,4 @@ const ScreenTemplate: FC<ScreenWrapperProps> = ({ children }) => {
   );
 };
 
-export default memo(ScreenTemplate);
+export default memo(AppProvider);

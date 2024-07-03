@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
 import { RoutePaths, useCheckIfLoggedIn } from "@/global";
+import { Loader } from "@/components/atoms/Loader";
 
 const StorePage = lazy(() =>
   import("@/pages").then((module) => ({ default: module.StorePage })),
@@ -31,7 +32,7 @@ const Router: FC<RouterProps> = ({ children }) => {
   return (
     <BrowserRouter>
       {children}
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<Loader isLoading />}>
         <Routes>
           <Route element={<PrivateRoutes isAuthenticated={isLoggedIn} />}>
             <Route path={RoutePaths.Store} element={<StorePage />} />
