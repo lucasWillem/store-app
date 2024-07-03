@@ -2,7 +2,7 @@ import { memo, ReactNode, FC, useCallback } from "react";
 
 import { Box } from "@mui/material";
 
-import { CustomAlert } from "@/components/atoms/CustomAlert";
+import { CustomAlert } from "@/components/molecules/CustomAlert";
 import { useStoreActions, useStoreState } from "@/redux";
 import { Loader } from "@/components/atoms/Loader";
 
