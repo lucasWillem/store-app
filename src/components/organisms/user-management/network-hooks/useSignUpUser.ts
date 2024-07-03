@@ -2,10 +2,10 @@ import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
 
 import {
-  type CustomStrapiError,
-  type StrapiServerResponse,
-  handleNetworkError,
+  type StrapiAPIErrorResponse,
+  type StrapiAPIResponse,
   type CustomMutationOptions,
+  helpers,
 } from "@/networking";
 
 interface Data {
@@ -14,7 +14,7 @@ interface Data {
   password: string;
 }
 
-type Response = StrapiServerResponse<{
+type Response = StrapiAPIResponse<{
   jwt?: string;
   user?: {
     id: number;
@@ -23,7 +23,6 @@ type Response = StrapiServerResponse<{
     createdAt: Date;
     updatedAt: Date;
   } | null;
-  error?: CustomStrapiError;
 }>;
 
 export const mutationKey = ["SignUpUser"];
@@ -33,7 +32,7 @@ async function signUpUser(url: string, data: Data): Promise<Response> {
     const response = await axios.post<Response>(url, data);
     return response.data;
   } catch (error) {
-    return handleNetworkError(error as CustomStrapiError);
+    return helpers.handleNetworkError(error as StrapiAPIErrorResponse);
   }
 }
 

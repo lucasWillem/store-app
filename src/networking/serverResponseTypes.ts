@@ -1,16 +1,18 @@
 import { type AxiosError } from "axios";
 
-export type CustomStrapiError = AxiosError<
-  StrapiServerResponse["errorResponse"]
->;
+export type StrapiAPIErrorResponse = AxiosError<{
+  error: StrapiAPIResponse["error"];
+}>;
 
-export type StrapiServerResponse<SuccessResponseBody = unknown> =
+export type ProductsAPIErrorResponse = AxiosError<undefined>;
+
+export type StrapiAPIResponse<SuccessResponseBody = unknown> =
   SuccessResponseBody & {
-    errorResponse?: {
-      error?: {
-        status: number;
-        message: string;
-        name: string;
-      };
+    error?: {
+      status: number;
+      message: string;
+      name: string;
     };
   };
+
+export type ProductsAPIResponse<Body = undefined> = Body;
