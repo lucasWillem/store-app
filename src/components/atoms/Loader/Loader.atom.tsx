@@ -6,7 +6,7 @@ interface LoaderProps {
   isLoading: boolean;
 }
 
-const Loader: FC<LoaderProps> = ({ isLoading }) => {
+const _Loader: FC<LoaderProps> = ({ isLoading }) => {
   return (
     <>
       {isLoading && (
@@ -18,4 +18,5 @@ const Loader: FC<LoaderProps> = ({ isLoading }) => {
   );
 };
 
-export default memo(Loader);
+const Loader = memo(_Loader);
+export default Loader;

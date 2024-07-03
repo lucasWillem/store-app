@@ -22,7 +22,7 @@ export interface LoginFormInputs {
   password: string;
 }
 
-const LoginForm: FC = () => {
+const _LoginForm: FC = () => {
   const {
     control,
     handleSubmit,
@@ -49,7 +49,7 @@ const LoginForm: FC = () => {
 
   const navigate = useNavigate();
 
-  const { mutate: loginUser } = useSubmitLogin({
+  const { mutate: submitLogin } = useSubmitLogin({
     url: AuthenticationEndPoints.Login,
     options: {
       onMutate: () => {
@@ -81,19 +81,20 @@ const LoginForm: FC = () => {
   });
 
   const onLogin = ({ email, password }: LoginFormInputs) => {
-    loginUser({ identifier: email, password });
+    submitLogin({ identifier: email, password });
   };
 
   const title = "Please log in to continue";
 
   const handleChange = useCallback(
     (name: keyof LoginFormInputs) => {
-      trigger(name);
+      void trigger(name);
     },
     [trigger],
   );
 
   return (
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <StyledLoginForm component="form" onSubmit={handleSubmit(onLogin)}>
       <Typography color="primary" variant="h6">
         {title}
@@ -174,4 +175,5 @@ const LoginForm: FC = () => {
   );
 };
 
-export default memo(LoginForm);
+const LoginForm = memo(_LoginForm);
+export default LoginForm;

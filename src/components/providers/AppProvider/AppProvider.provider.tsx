@@ -12,7 +12,7 @@ interface AppProviderProps {
   children: ReactNode;
 }
 
-const AppProvider: FC<AppProviderProps> = ({ children }) => {
+const _AppProvider: FC<AppProviderProps> = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <ErrorBoundary>
@@ -26,4 +26,5 @@ const AppProvider: FC<AppProviderProps> = ({ children }) => {
   );
 };
 
-export default memo(AppProvider);
+const AppProvider = memo(_AppProvider);
+export default AppProvider;

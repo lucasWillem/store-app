@@ -8,10 +8,10 @@ import {
   type CustomMutationOptions,
 } from "@/networking";
 
-type Data = {
+interface Data {
   identifier: string;
   password: string;
-};
+}
 
 type Response = StrapiServerResponse<{
   jwt?: string;
@@ -32,7 +32,6 @@ async function submitLogin(url: string, data: Data): Promise<Response> {
     const response = await axios.post<Response>(url, data);
     return response.data;
   } catch (error) {
-    console.log(error);
     return handleNetworkError(error as CustomStrapiError);
   }
 }
