@@ -4,8 +4,9 @@ import { ThemeProvider } from "@mui/material";
 
 import { theme } from "@/styles/theme";
 import { store } from "@/redux";
-import { AppWrapper } from "@/components/templates/AppWrapper";
+import { AppWrapper } from "./utilities/AppWrapper";
 import { NetworkProvider } from "@/networking";
+import { ErrorBoundary } from "./utilities/ErrorBoundary";
 
 interface AppProviderProps {
   children: ReactNode;
@@ -14,11 +15,13 @@ interface AppProviderProps {
 const AppProvider: FC<AppProviderProps> = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <StoreProvider store={store}>
-        <NetworkProvider>
-          <AppWrapper>{children}</AppWrapper>
-        </NetworkProvider>
-      </StoreProvider>
+      <ErrorBoundary>
+        <StoreProvider store={store}>
+          <NetworkProvider>
+            <AppWrapper>{children}</AppWrapper>
+          </NetworkProvider>
+        </StoreProvider>
+      </ErrorBoundary>
     </ThemeProvider>
   );
 };
