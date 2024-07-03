@@ -1,16 +1,16 @@
-import { memo, ReactNode, FC, CSSProperties, useCallback } from "react";
+import { memo, ReactNode, FC, useCallback } from "react";
 
-import { StyledAppWrapper } from "./AppWrapper.styles";
+import { Box } from "@mui/material";
+
 import { CustomAlert } from "@/components/atoms/CustomAlert";
 import { useStoreActions, useStoreState } from "@/redux";
 import { Loader } from "@/components/atoms/Loader";
 
 interface AppWrapperProps {
   children: ReactNode;
-  containerStyle?: CSSProperties;
 }
 
-const AppWrapper: FC<AppWrapperProps> = ({ children, containerStyle }) => {
+const AppWrapper: FC<AppWrapperProps> = ({ children }) => {
   const { isVisible, message, severity } = useStoreState(
     (state) => state.alert.alertConfig,
   );
@@ -28,7 +28,7 @@ const AppWrapper: FC<AppWrapperProps> = ({ children, containerStyle }) => {
   }, [configureAlert]);
 
   return (
-    <StyledAppWrapper style={containerStyle}>
+    <Box>
       <CustomAlert
         isVisible={isVisible}
         handleOnModalClose={handleModalClose}
@@ -39,7 +39,7 @@ const AppWrapper: FC<AppWrapperProps> = ({ children, containerStyle }) => {
       <Loader isLoading={loaderIsVisible} />
 
       {children}
-    </StyledAppWrapper>
+    </Box>
   );
 };
 
