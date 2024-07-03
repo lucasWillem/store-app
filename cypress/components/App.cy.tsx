@@ -1,6 +1,6 @@
-import App from "./App";
 import { mount } from "@cypress/react18";
-import { AppProvider } from "@/components/templates/AppProvider";
+import App from "../../src/App";
+import { AppProvider } from "@/components/providers/AppProvider";
 
 describe("<App />", () => {
   it("renders", () => {

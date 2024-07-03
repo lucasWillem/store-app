@@ -6,11 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { RoutePaths, useCheckIfLoggedIn } from "@/global";
 import { useStoreActions } from "@/redux";
 
-export type AuthMenuProps = {
+export interface AuthMenuProps {
   containerStyle?: CSSProperties;
-};
+}
 
-const AuthMenu: FC<AuthMenuProps> = ({ containerStyle }) => {
+const _AuthMenu: FC<AuthMenuProps> = ({ containerStyle }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const isLoggedIn = useCheckIfLoggedIn();
@@ -60,4 +60,5 @@ const AuthMenu: FC<AuthMenuProps> = ({ containerStyle }) => {
   );
 };
 
-export default memo(AuthMenu);
+const AuthMenu = memo(_AuthMenu);
+export default AuthMenu;

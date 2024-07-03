@@ -1,4 +1,4 @@
-export { default as StorePage } from "./StorePage.template";
-export { default as UnauthorizedPage } from "./UnauthorizedPage.template";
-export { default as LoginPage } from "./LoginPage.template";
-export { default as SignUpPage } from "./SignUpPage.template";
+export { default as StorePage } from "./Store.page";
+export { default as UnauthorizedPage } from "./Unauthorized.page";
+export { default as LoginPage } from "./Login.page";
+export { default as SignUpPage } from "./SignUp.page";

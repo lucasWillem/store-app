@@ -15,14 +15,14 @@ import { RoutePaths } from "@/global";
 
 import { useSignUpUser } from "../../network-hooks/useSignUpUser";
 import { AuthenticationEndPoints } from "../../constants";
-import { AlertSeverity } from "@/components/atoms/CustomAlert/state/alert-model";
+import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
 
 export interface SignUpFormInputs {
   email: string;
   password: string;
 }
 
-const SignUpForm: FC = () => {
+const _SignUpForm: FC = () => {
   const {
     control,
     handleSubmit,
@@ -93,12 +93,13 @@ const SignUpForm: FC = () => {
 
   const handleChange = useCallback(
     (name: keyof SignUpFormInputs) => {
-      trigger(name);
+      void trigger(name);
     },
     [trigger],
   );
 
   return (
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <StyledSignUpForm component="form" onSubmit={handleSubmit(onSignUp)}>
       <Typography color="primary" variant="h6">
         {title}
@@ -179,4 +180,5 @@ const SignUpForm: FC = () => {
   );
 };
 
-export default memo(SignUpForm);
+const SignUpForm = memo(_SignUpForm);
+export default SignUpForm;
