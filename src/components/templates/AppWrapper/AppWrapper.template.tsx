@@ -3,6 +3,7 @@ import { memo, ReactNode, FC, CSSProperties, useCallback } from "react";
 import { StyledAppWrapper } from "./AppWrapper.styles";
 import { CustomAlert } from "@/components/atoms/CustomAlert";
 import { useStoreActions, useStoreState } from "@/redux";
+import { Loader } from "@/components/atoms/Loader";
 
 interface AppWrapperProps {
   children: ReactNode;
@@ -12,6 +13,10 @@ interface AppWrapperProps {
 const AppWrapper: FC<AppWrapperProps> = ({ children, containerStyle }) => {
   const { isVisible, message, severity } = useStoreState(
     (state) => state.alert.alertConfig,
+  );
+
+  const { isVisible: loaderIsVisible } = useStoreState(
+    (state) => state.loader.loaderConfig,
   );
 
   const configureAlert = useStoreActions(
@@ -30,6 +35,8 @@ const AppWrapper: FC<AppWrapperProps> = ({ children, containerStyle }) => {
         message={message}
         severity={severity}
       />
+
+      <Loader isLoading={loaderIsVisible} />
 
       {children}
     </StyledAppWrapper>
