@@ -12,3 +12,12 @@ interface ProductRating {
   rate: number;
   count: number;
 }
+
+export interface Cart {
+  userId: number;
+  date: string;
+  products: {
+    productId: number;
+    quantity: number;
+  }[];
+}
