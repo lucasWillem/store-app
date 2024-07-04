@@ -114,7 +114,7 @@ const _SignUpForm: FC = () => {
             <FormControl>
               <TextField
                 {...field}
-                data-testid="email"
+                data-cy="signup-email"
                 label="Email"
                 variant="outlined"
                 fullWidth
@@ -141,7 +141,7 @@ const _SignUpForm: FC = () => {
             <FormControl>
               <TextField
                 {...field}
-                data-testid="password"
+                data-cy="signup-password"
                 label="Password"
                 variant="outlined"
                 fullWidth
@@ -171,7 +171,12 @@ const _SignUpForm: FC = () => {
       </StyledInputTemplate>
 
       <StyledButtonsContainer>
-        <Button variant="outlined" disabled={!isValid} type="submit">
+        <Button
+          data-cy="button"
+          variant="outlined"
+          disabled={!isValid}
+          type="submit"
+        >
           Sign Up
         </Button>
         <Button onClick={() => navigate(RoutePaths.Login)} color="secondary">
