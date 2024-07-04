@@ -6,6 +6,7 @@ const StyledFlatList = styled(Box)<{ theme?: Theme }>(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
   gap: theme.spacing(2),
+  paddingBottom: theme.spacing(1),
   overflow: "auto",
   "::-webkit-scrollbar": {
     display: "none",
