@@ -16,6 +16,7 @@ import { RoutePaths } from "@/global";
 import { useSubmitLogin } from "../../network-hooks/useSubmitLogin";
 import { AuthenticationEndPoints } from "../../constants";
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
+import { utils } from "@/global";
 
 export interface LoginFormInputs {
   email: string;
@@ -62,7 +63,7 @@ const _LoginForm: FC = () => {
           const { message } = error as Error;
           configureAlert({
             isVisible: true,
-            message: message,
+            message: message ?? "An error occurred while logging in",
             severity: AlertSeverity.Error,
           });
         } else if (data) {
@@ -71,6 +72,7 @@ const _LoginForm: FC = () => {
           if (!jwt || !user) return;
 
           storeUser({
+            id: utils.generateRandomNumber(1000),
             jwt,
             username: user.username,
           });

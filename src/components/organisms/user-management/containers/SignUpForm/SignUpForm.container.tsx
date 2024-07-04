@@ -16,6 +16,7 @@ import { RoutePaths } from "@/global";
 import { useSignUpUser } from "../../network-hooks/useSignUpUser";
 import { AuthenticationEndPoints } from "../../constants";
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
+import { utils } from "@/global";
 
 export interface SignUpFormInputs {
   email: string;
@@ -62,7 +63,7 @@ const _SignUpForm: FC = () => {
           const { message } = error as Error;
           configureAlert({
             isVisible: true,
-            message: message,
+            message: message ?? "An error occurred while registering user",
             severity: AlertSeverity.Error,
           });
         } else if (data) {
@@ -71,6 +72,7 @@ const _SignUpForm: FC = () => {
           if (!jwt || !user) return;
 
           storeUser({
+            id: utils.generateRandomNumber(1000),
             jwt,
             username: user.username,
           });
