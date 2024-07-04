@@ -8,4 +8,5 @@ export enum AuthenticationEndPoints {
 
 export enum StoreEndPoints {
   FetchProducts = "https://fakestoreapi.com/products",
+  SubmitCart = "https://fakestoreapi.com/carts",
 }
