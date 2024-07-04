@@ -14,6 +14,10 @@ export interface StoreFrontProps {
   containerStyle?: CSSProperties;
 }
 
+interface CartItem extends Product {
+  count: number;
+}
+
 const _StoreFront: FC<StoreFrontProps> = ({ containerStyle }) => {
   const {
     data: productsData,
@@ -31,6 +35,8 @@ const _StoreFront: FC<StoreFrontProps> = ({ containerStyle }) => {
   const configureAlert = useStoreActions(
     (actions) => actions.alert.configureAlert,
   );
+
+  const { addCartItem } = useStoreActions((actions) => actions.cartItems);
 
   useEffect(() => {
     configureLoader({ isVisible: isPending });
@@ -53,9 +59,13 @@ const _StoreFront: FC<StoreFrontProps> = ({ containerStyle }) => {
 
   const renderProducts = useCallback(
     (product: Product, index: number) => (
-      <ProductCard key={`${product.id}-${index}`} {...product} />
+      <ProductCard
+        key={`${product.id}-${index}`}
+        {...product}
+        handleAddToCart={() => addCartItem(product as CartItem)}
+      />
     ),
-    [],
+    [addCartItem],
   );
 
   return (
