@@ -5,3 +5,7 @@ export enum AuthenticationEndPoints {
   Register = `${BASE_URL}/api/auth/local/register`,
   Login = `${BASE_URL}/api/auth/local`,
 }
+
+export enum StoreEndPoints {
+  FetchProducts = "https://fakestoreapi.com/products",
+}
