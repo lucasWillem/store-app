@@ -109,7 +109,7 @@ const _LoginForm: FC = () => {
             <FormControl>
               <TextField
                 {...field}
-                data-testid="email"
+                data-cy="login-email"
                 label="Email"
                 variant="outlined"
                 fullWidth
@@ -136,7 +136,7 @@ const _LoginForm: FC = () => {
             <FormControl>
               <TextField
                 {...field}
-                data-testid="password"
+                data-cy="login-password"
                 label="Password"
                 variant="outlined"
                 fullWidth
@@ -166,10 +166,19 @@ const _LoginForm: FC = () => {
       </StyledInputTemplate>
 
       <StyledButtonsContainer>
-        <Button variant="outlined" disabled={!isValid} type="submit">
+        <Button
+          data-cy="button"
+          variant="outlined"
+          disabled={!isValid}
+          type="submit"
+        >
           Log In
         </Button>
-        <Button onClick={() => navigate(RoutePaths.SignUp)} color="secondary">
+        <Button
+          data-cy="toggle-auth-form-button"
+          onClick={() => navigate(RoutePaths.SignUp)}
+          color="secondary"
+        >
           {`I don't have an account`}
         </Button>
       </StyledButtonsContainer>
