@@ -1,26 +1,61 @@
-import { FC, memo, CSSProperties, useEffect } from "react";
+import { FC, memo, CSSProperties, useEffect, useCallback } from "react";
+import { Box } from "@mui/material";
+
 import { useFetchProducts } from "../../network-hooks/useFetchProducts";
 import { StoreEndPoints } from "@/components/organisms/user-management/constants";
-import { Box } from "@mui/material";
+
 import { ProductCard } from "@/components/molecules/ProductCard";
 import { FlatList } from "@/components/utilities/FlatList";
 import { Product } from "@/networking/entityTypes";
+import { useStoreActions } from "@/redux";
+import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
 
 export interface StoreFrontProps {
   containerStyle?: CSSProperties;
 }
 
 const _StoreFront: FC<StoreFrontProps> = ({ containerStyle }) => {
-  const { data: productsData, isFetching } = useFetchProducts({
+  const {
+    data: productsData,
+    isPending,
+    isError,
+    error,
+  } = useFetchProducts({
     url: StoreEndPoints.FetchProducts,
   });
 
-  useEffect(() => {
-    console.log(productsData, isFetching);
-  }, [isFetching, productsData]);
+  const configureLoader = useStoreActions(
+    (actions) => actions.loader.configureLoader,
+  );
 
-  const renderProducts = (product: Product, index: number) => (
-    <ProductCard key={`${product.id}-${index}`} {...product} />
+  const configureAlert = useStoreActions(
+    (actions) => actions.alert.configureAlert,
+  );
+
+  useEffect(() => {
+    configureLoader({ isVisible: isPending });
+
+    if (isError) {
+      configureAlert({
+        isVisible: true,
+        message: error?.message ?? "An error occurred while fetching products",
+        severity: AlertSeverity.Error,
+      });
+    }
+  }, [
+    isPending,
+    productsData,
+    isError,
+    configureLoader,
+    configureAlert,
+    error?.message,
+  ]);
+
+  const renderProducts = useCallback(
+    (product: Product, index: number) => (
+      <ProductCard key={`${product.id}-${index}`} {...product} />
+    ),
+    [],
   );
 
   return (
