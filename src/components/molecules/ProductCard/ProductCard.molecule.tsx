@@ -1,15 +1,8 @@
 import { FC, memo } from "react";
-import {
-  Button,
-  CardActions,
-  CardMedia,
-  Typography,
-  Box,
-  Card,
-} from "@mui/material";
+import { Button, CardActions, CardMedia, Typography, Box } from "@mui/material";
 
 import { AiOutlinePlus } from "react-icons/ai";
-import { StyledCardContent } from "./ProductCard.styles";
+import { StyledCardContent, StyledProductCard } from "./ProductCard.styles";
 import { Product } from "@/networking/entityTypes";
 
 type ProductCardProps = Product;
@@ -23,7 +16,7 @@ const _ProductCard: FC<ProductCardProps> = ({
   rating,
 }) => {
   return (
-    <Card>
+    <StyledProductCard>
       <CardMedia component="img" height="200" image={image} alt={title} />
       <StyledCardContent>
         <Box>
@@ -51,7 +44,7 @@ const _ProductCard: FC<ProductCardProps> = ({
           <AiOutlinePlus size={24} />
         </Button>
       </CardActions>
-    </Card>
+    </StyledProductCard>
   );
 };
 
