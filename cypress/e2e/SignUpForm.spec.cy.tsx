@@ -1,5 +1,3 @@
-import { AuthenticationEndPoints } from "@/components/organisms/user-management/constants";
-
 enum WaitTimes {
   Short = 2000,
   Medium = 7000,
@@ -48,7 +46,7 @@ describe("Signup form", () => {
 
     cy.get(submitButtonSelector).first().click();
 
-    cy.intercept("POST", AuthenticationEndPoints.Register, {
+    cy.intercept("POST", "mystore/register", {
       statusCode: 400,
       body: {
         error: {

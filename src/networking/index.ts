@@ -17,5 +17,7 @@ export {
 export * as entities from "./entityTypes";
 
 // These will be extended in time, so rather export like this
-
 export * as helpers from "./helpers";
+
+// These will be extended in time, so rather export like this
+export * as constants from "./constants";

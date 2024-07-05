@@ -2,13 +2,13 @@ import { FC, memo, CSSProperties, useEffect, useCallback } from "react";
 import { Box } from "@mui/material";
 
 import { useFetchProducts } from "../../network-hooks/useFetchProducts";
-import { StoreEndPoints } from "@/components/organisms/user-management/constants";
 
 import { ProductCard } from "@/components/molecules/ProductCard";
 import { FlatList } from "@/components/utilities/FlatList";
 import { Product } from "@/networking/entityTypes";
 import { useStoreActions } from "@/redux";
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
+import { constants } from "@/networking";
 
 export interface StoreFrontProps {
   containerStyle?: CSSProperties;
@@ -25,7 +25,7 @@ const _StoreFront: FC<StoreFrontProps> = ({ containerStyle }) => {
     isError,
     error,
   } = useFetchProducts({
-    url: StoreEndPoints.FetchProducts,
+    url: constants.FetchProductsEndPoint,
   });
 
   const configureLoader = useStoreActions(
