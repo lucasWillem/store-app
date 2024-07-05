@@ -10,14 +10,14 @@ import {
   StyledButtonsContainer,
 } from "./LoginForm.styles";
 
-import { useStoreActions } from "@/redux";
-import { RoutePaths } from "@/global";
-
-import { useSubmitLogin } from "../../network-hooks/useSubmitLogin";
-import { AuthenticationEndPoints } from "../../constants";
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
-import { utils } from "@/global";
 
+import { useStoreActions } from "@/redux";
+import { utils } from "@/global";
+import { constants } from "@/networking";
+import { RoutePaths } from "@/routing";
+
+import { useSubmitLogin } from "./network-hooks/useSubmitLogin";
 export interface LoginFormInputs {
   email: string;
   password: string;
@@ -51,7 +51,7 @@ const _LoginForm: FC = () => {
   const navigate = useNavigate();
 
   const { mutate: submitLogin } = useSubmitLogin({
-    url: AuthenticationEndPoints.Login,
+    url: constants.LoginEndPoint,
     options: {
       onMutate: () => {
         configureLoader({ isVisible: true });

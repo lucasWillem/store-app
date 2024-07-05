@@ -1,12 +1,12 @@
 import { FC, ReactNode, memo } from "react";
 import { StoreProvider } from "easy-peasy";
-import { ThemeProvider } from "@mui/material";
+import { ThemeProvider, CssBaseline } from "@mui/material";
 
 import { theme } from "@/styles/theme";
 import { store } from "@/redux";
-import { AppWrapper } from "./utilities/AppWrapper";
 import { NetworkProvider } from "@/networking";
-import { ErrorBoundary } from "./utilities/ErrorBoundary";
+
+import { AppWrapper, ErrorBoundary } from "./utilities";
 
 interface AppProviderProps {
   children: ReactNode;
@@ -18,7 +18,9 @@ const _AppProvider: FC<AppProviderProps> = ({ children }) => {
       <ErrorBoundary>
         <StoreProvider store={store}>
           <NetworkProvider>
-            <AppWrapper>{children}</AppWrapper>
+            <CssBaseline>
+              <AppWrapper>{children}</AppWrapper>
+            </CssBaseline>
           </NetworkProvider>
         </StoreProvider>
       </ErrorBoundary>

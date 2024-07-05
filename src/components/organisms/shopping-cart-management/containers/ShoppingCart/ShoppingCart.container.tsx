@@ -10,18 +10,20 @@ import {
   Button,
 } from "@mui/material";
 
-import { useStoreActions, useStoreState } from "@/redux";
 import {
   MdShoppingCart,
   MdAddCircleOutline,
   MdRemoveCircleOutline,
 } from "react-icons/md";
 
-import { StyledDrawerList, StyledListItemText } from "./ShoppingCart.styles";
-import { CartItem } from "../../state/shoppingcart-model";
-import { useSubmitCart } from "./network-hooks/useSubmitCart";
-import { StoreEndPoints } from "@/components/organisms/user-management/constants";
+import { useStoreActions, useStoreState } from "@/redux";
+import { constants } from "@/networking";
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
+
+import { StyledDrawerList, StyledListItemText } from "./ShoppingCart.styles";
+import { CartItem } from "./state/shoppingcart-model";
+import { useSubmitCart } from "./network-hooks/useSubmitCart";
+
 import dayjs from "dayjs";
 
 interface ShoppingCartProps {
@@ -45,7 +47,7 @@ const _ShoppingCart: FC<ShoppingCartProps> = ({ containerStyle }) => {
   const { user } = useStoreState((state) => state.user);
 
   const { mutate: submitCart } = useSubmitCart({
-    url: StoreEndPoints.SubmitCart,
+    url: constants.SubmitCartEndPoint,
     options: {
       onMutate: () => {
         configureLoader({ isVisible: true });

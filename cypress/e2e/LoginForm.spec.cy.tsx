@@ -1,13 +1,5 @@
-import { AuthenticationEndPoints } from "@/components/organisms/user-management/constants";
-import { RoutePaths } from "@/global";
-
-//TODO: store globally
-
-enum WaitTimes {
-  Short = 2000,
-  Medium = 10000,
-  Long = 15000,
-}
+import { RoutePaths } from "@/routing";
+import { WaitTimes } from "cypress/types";
 
 const noneExistingUserEmail = "none.existent.user@email.com";
 const existingUser = "existing.user@email.com";
@@ -49,7 +41,7 @@ describe("Login form", () => {
 
     cy.get(submitButtonSelector).first().click();
 
-    cy.intercept("POST", AuthenticationEndPoints.Login, {
+    cy.intercept("POST", "mystore/login", {
       statusCode: 400,
       body: {
         error: {
