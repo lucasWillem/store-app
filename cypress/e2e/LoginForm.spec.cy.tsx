@@ -1,13 +1,6 @@
 import { AuthenticationEndPoints } from "@/components/organisms/user-management/constants";
 import { RoutePaths } from "@/global";
-
-//TODO: store globally
-
-enum WaitTimes {
-  Short = 2000,
-  Medium = 10000,
-  Long = 15000,
-}
+import { WaitTimes } from "cypress/constants";
 
 const noneExistingUserEmail = "none.existent.user@email.com";
 const existingUser = "existing.user@email.com";

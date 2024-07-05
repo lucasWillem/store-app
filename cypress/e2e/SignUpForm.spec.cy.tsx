@@ -1,10 +1,5 @@
 import { AuthenticationEndPoints } from "@/components/organisms/user-management/constants";
-
-enum WaitTimes {
-  Short = 2000,
-  Medium = 10000,
-  Long = 15000,
-}
+import { WaitTimes } from "cypress/constants";
 
 const newUserEmail = "new.user@email.com";
 const existingUserEmail = "existing.user@email.com";
