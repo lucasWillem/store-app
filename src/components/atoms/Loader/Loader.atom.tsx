@@ -10,7 +10,7 @@ const _Loader: FC<LoaderProps> = ({ isLoading }) => {
   return (
     <>
       {isLoading && (
-        <StyledLoaderWrapper>
+        <StyledLoaderWrapper data-cy="loader">
           <CircularProgress color="inherit" />
         </StyledLoaderWrapper>
       )}
