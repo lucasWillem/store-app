@@ -1,5 +1,5 @@
 import { memo, ReactNode } from "react";
-import { StyledFlatList } from "./FlatList.styles";
+import { StyledFlatList } from "./Grid.styles";
 
 interface FlatListProps<T> {
   items: T[];
