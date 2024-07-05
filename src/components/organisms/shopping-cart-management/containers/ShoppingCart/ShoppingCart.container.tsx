@@ -10,19 +10,20 @@ import {
   Button,
 } from "@mui/material";
 
-import { useStoreActions, useStoreState } from "@/redux";
 import {
   MdShoppingCart,
   MdAddCircleOutline,
   MdRemoveCircleOutline,
 } from "react-icons/md";
 
+import { useStoreActions, useStoreState } from "@/redux";
 import { constants } from "@/networking";
+import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
 
 import { StyledDrawerList, StyledListItemText } from "./ShoppingCart.styles";
 import { CartItem } from "./state/shoppingcart-model";
 import { useSubmitCart } from "./network-hooks/useSubmitCart";
-import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
+
 import dayjs from "dayjs";
 
 interface ShoppingCartProps {

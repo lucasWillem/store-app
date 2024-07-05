@@ -10,14 +10,14 @@ import {
   StyledButtonsContainer,
 } from "./LoginForm.styles";
 
+import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
+
 import { useStoreActions } from "@/redux";
 import { utils } from "@/global";
 import { constants } from "@/networking";
-import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
-
-import { useSubmitLogin } from "./network-hooks/useSubmitLogin";
 import { RoutePaths } from "@/routing";
 
+import { useSubmitLogin } from "./network-hooks/useSubmitLogin";
 export interface LoginFormInputs {
   email: string;
   password: string;
