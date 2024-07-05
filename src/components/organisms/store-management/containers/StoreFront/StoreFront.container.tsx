@@ -57,15 +57,22 @@ const _StoreFront: FC<StoreFrontProps> = ({ containerStyle }) => {
     error?.message,
   ]);
 
+  const handleAddToCart = useCallback(
+    (product: CartItem) => {
+      addCartItem(product);
+    },
+    [addCartItem],
+  );
+
   const renderProducts = useCallback(
     (product: entities.Product, index: number) => (
       <ProductCard
         key={`${product.id}-${index}`}
         {...product}
-        handleAddToCart={() => addCartItem(product as CartItem)}
+        handleAddToCart={() => handleAddToCart(product as CartItem)}
       />
     ),
-    [addCartItem],
+    [handleAddToCart],
   );
 
   return (
