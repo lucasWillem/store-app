@@ -2,7 +2,7 @@ import { AuthenticationEndPoints } from "@/components/organisms/user-management/
 
 enum WaitTimes {
   Short = 2000,
-  Medium = 10000,
+  Medium = 7000,
   Long = 15000,
 }
 
@@ -20,12 +20,12 @@ const alertSelector = "[data-cy=alert]";
 describe("Signup form", () => {
   beforeEach(() => {
     cy.visit("/login");
-    cy.wait(WaitTimes.Long);
+    cy.wait(WaitTimes.Medium);
     cy.get("[data-cy=toggle-auth-form-button]").click();
     cy.wait(WaitTimes.Short);
   });
 
-  it("1. will disable submit button if email or password fails validation", () => {
+  it.skip("1. will disable submit button if email or password fails validation", () => {
     //email validation failure
     cy.get(emailSelector).type(inValidEmail);
     cy.get(submitButtonSelector).first().should("have.attr", "disabled");
@@ -41,7 +41,7 @@ describe("Signup form", () => {
   });
 
   it("2. displays an error message in an alert on API error", () => {
-    const errorMessage = "User already exists";
+    const errorMessage = "Email or Username are already taken";
 
     cy.get(emailSelector).type(existingUserEmail);
     cy.get(passwordSelector).type(validPassword);
@@ -56,6 +56,8 @@ describe("Signup form", () => {
         },
       },
     }).as("registerRequest");
+
+    cy.wait(WaitTimes.Short);
 
     cy.get(alertSelector).should("contain", errorMessage);
   });

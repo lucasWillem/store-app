@@ -23,7 +23,7 @@ const alertSelector = "[data-cy=alert]";
 describe("Login form", () => {
   beforeEach(() => {
     cy.visit("/");
-    cy.wait(WaitTimes.Long);
+    cy.wait(WaitTimes.Medium);
   });
 
   it("1. will disable submit button if email or password fails validation", () => {
@@ -57,6 +57,8 @@ describe("Login form", () => {
         },
       },
     }).as("loginRequest");
+
+    cy.wait(WaitTimes.Short);
 
     cy.get(alertSelector).should("contain", errorMessage);
   });
