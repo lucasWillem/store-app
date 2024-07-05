@@ -15,7 +15,7 @@ import { RoutePaths, utils } from "@/global";
 import { constants } from "@/networking";
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
 
-import { useSubmitLogin } from "../../network-hooks/useSubmitLogin";
+import { useSubmitLogin } from "./network-hooks/useSubmitLogin";
 
 export interface LoginFormInputs {
   email: string;
