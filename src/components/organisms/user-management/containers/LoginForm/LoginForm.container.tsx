@@ -11,11 +11,12 @@ import {
 } from "./LoginForm.styles";
 
 import { useStoreActions } from "@/redux";
-import { RoutePaths, utils } from "@/global";
+import { utils } from "@/global";
 import { constants } from "@/networking";
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
 
 import { useSubmitLogin } from "./network-hooks/useSubmitLogin";
+import { RoutePaths } from "@/routing";
 
 export interface LoginFormInputs {
   email: string;

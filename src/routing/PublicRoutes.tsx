@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Outlet, Navigate } from "react-router-dom";
-import { RoutePaths } from "@/global";
+import { RoutePaths } from "./types";
 
 interface PublicRoutesProps {
   isAuthenticated: boolean;

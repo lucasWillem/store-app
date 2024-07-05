@@ -3,8 +3,10 @@ import { Box, Menu, MenuItem } from "@mui/material";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { StyledIconButton } from "./AuthMenu.styles";
 import { useNavigate } from "react-router-dom";
-import { RoutePaths, useCheckIfLoggedIn } from "@/global";
+import { useCheckIfLoggedIn } from "@/global";
+
 import { useStoreActions } from "@/redux";
+import { RoutePaths } from "@/routing";
 
 export interface AuthMenuProps {
   containerStyle?: CSSProperties;
