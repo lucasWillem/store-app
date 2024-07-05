@@ -20,7 +20,7 @@ import {
 import { constants } from "@/networking";
 
 import { StyledDrawerList, StyledListItemText } from "./ShoppingCart.styles";
-import { CartItem } from "../../state/shoppingcart-model";
+import { CartItem } from "./state/shoppingcart-model";
 import { useSubmitCart } from "./network-hooks/useSubmitCart";
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
 import dayjs from "dayjs";
