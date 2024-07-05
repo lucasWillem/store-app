@@ -1,4 +1,4 @@
-import { RoutePaths } from "@/global";
+import { RoutePaths } from "@/routing";
 import { WaitTimes } from "cypress/types";
 
 const noneExistingUserEmail = "none.existent.user@email.com";

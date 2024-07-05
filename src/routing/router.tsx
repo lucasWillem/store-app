@@ -3,8 +3,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
-import { RoutePaths, useCheckIfLoggedIn } from "@/global";
+import { useCheckIfLoggedIn } from "@/global";
 import { Loader } from "@/components/atoms/Loader";
+import { RoutePaths } from "./types";
 
 const StorePage = lazy(() =>
   import("@/pages").then((module) => ({ default: module.StorePage })),

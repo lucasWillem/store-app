@@ -11,11 +11,12 @@ import {
 } from "./SignUpForm.styles";
 
 import { useStoreActions } from "@/redux";
-import { RoutePaths, utils } from "@/global";
+import { utils } from "@/global";
 import { constants } from "@/networking";
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
 
 import { useSignUpUser } from "./network-hooks/useSignUpUser";
+import { RoutePaths } from "@/routing";
 
 export interface SignUpFormInputs {
   email: string;
