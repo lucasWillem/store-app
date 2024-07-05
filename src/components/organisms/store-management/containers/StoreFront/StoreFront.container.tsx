@@ -1,7 +1,7 @@
 import { FC, memo, CSSProperties, useEffect, useCallback } from "react";
 import { Box } from "@mui/material";
 
-import { useFetchProducts } from "../../network-hooks/useFetchProducts";
+import { useFetchProducts } from "./network-hooks/useFetchProducts";
 
 import { ProductCard } from "@/components/molecules/ProductCard";
 import { FlatList } from "@/components/utilities/FlatList";
