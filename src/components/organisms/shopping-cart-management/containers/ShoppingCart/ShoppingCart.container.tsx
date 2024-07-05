@@ -17,10 +17,11 @@ import {
   MdRemoveCircleOutline,
 } from "react-icons/md";
 
+import { constants } from "@/networking";
+
 import { StyledDrawerList, StyledListItemText } from "./ShoppingCart.styles";
 import { CartItem } from "../../state/shoppingcart-model";
 import { useSubmitCart } from "./network-hooks/useSubmitCart";
-import { StoreEndPoints } from "@/components/organisms/user-management/constants";
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
 import dayjs from "dayjs";
 
@@ -45,7 +46,7 @@ const _ShoppingCart: FC<ShoppingCartProps> = ({ containerStyle }) => {
   const { user } = useStoreState((state) => state.user);
 
   const { mutate: submitCart } = useSubmitCart({
-    url: StoreEndPoints.SubmitCart,
+    url: constants.SubmitCartEndPoint,
     options: {
       onMutate: () => {
         configureLoader({ isVisible: true });

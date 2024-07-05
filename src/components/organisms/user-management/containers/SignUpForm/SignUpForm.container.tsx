@@ -11,12 +11,11 @@ import {
 } from "./SignUpForm.styles";
 
 import { useStoreActions } from "@/redux";
-import { RoutePaths } from "@/global";
+import { RoutePaths, utils } from "@/global";
+import { constants } from "@/networking";
+import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
 
 import { useSignUpUser } from "../../network-hooks/useSignUpUser";
-import { AuthenticationEndPoints } from "../../constants";
-import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
-import { utils } from "@/global";
 
 export interface SignUpFormInputs {
   email: string;
@@ -51,7 +50,7 @@ const _SignUpForm: FC = () => {
   const navigate = useNavigate();
 
   const { mutate: registerUser } = useSignUpUser({
-    url: AuthenticationEndPoints.Register,
+    url: constants.RegisterEndPoint,
     options: {
       onMutate: () => {
         configureLoader({ isVisible: true });

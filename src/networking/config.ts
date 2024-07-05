@@ -1,11 +1,12 @@
-//TODO: Update env.VITE_API_URL and localhost to the actual values appropriate for the project
-
 interface Config {
-  apiUrl: string;
+  strapiUrl: string;
+  storeUrl: string;
 }
 
-const apiUrl = import.meta.env.VITE_API_URL as string | undefined;
+const strapiUrl = import.meta.env.VITE_STRAPI_URL as string;
+const storeUrl = import.meta.env.VITE_STORE_API_URL as string;
 
 export const config: Config = {
-  apiUrl: apiUrl ?? "http://localhost:2000",
+  strapiUrl,
+  storeUrl,
 };

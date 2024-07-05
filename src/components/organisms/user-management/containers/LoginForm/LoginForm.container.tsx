@@ -11,12 +11,11 @@ import {
 } from "./LoginForm.styles";
 
 import { useStoreActions } from "@/redux";
-import { RoutePaths } from "@/global";
+import { RoutePaths, utils } from "@/global";
+import { constants } from "@/networking";
+import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
 
 import { useSubmitLogin } from "../../network-hooks/useSubmitLogin";
-import { AuthenticationEndPoints } from "../../constants";
-import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
-import { utils } from "@/global";
 
 export interface LoginFormInputs {
   email: string;
@@ -51,7 +50,7 @@ const _LoginForm: FC = () => {
   const navigate = useNavigate();
 
   const { mutate: submitLogin } = useSubmitLogin({
-    url: AuthenticationEndPoints.Login,
+    url: constants.LoginEndPoint,
     options: {
       onMutate: () => {
         configureLoader({ isVisible: true });

@@ -1,4 +1,3 @@
-import { AuthenticationEndPoints } from "@/components/organisms/user-management/constants";
 import { RoutePaths } from "@/global";
 
 //TODO: store globally
@@ -49,7 +48,7 @@ describe("Login form", () => {
 
     cy.get(submitButtonSelector).first().click();
 
-    cy.intercept("POST", AuthenticationEndPoints.Login, {
+    cy.intercept("POST", "mystore/login", {
       statusCode: 400,
       body: {
         error: {
