@@ -13,10 +13,11 @@ import {
 import { useStoreActions } from "@/redux";
 import { utils } from "@/global";
 import { constants } from "@/networking";
+import { RoutePaths } from "@/routing";
+
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
 
 import { useSignUpUser } from "./network-hooks/useSignUpUser";
-import { RoutePaths } from "@/routing";
 
 export interface SignUpFormInputs {
   email: string;

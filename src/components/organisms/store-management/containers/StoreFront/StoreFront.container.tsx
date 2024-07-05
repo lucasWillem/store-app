@@ -5,16 +5,16 @@ import { useFetchProducts } from "./network-hooks/useFetchProducts";
 
 import { ProductCard } from "@/components/molecules/ProductCard";
 import { FlatList } from "@/components/utilities/FlatList";
-import { Product } from "@/networking/entityTypes";
-import { useStoreActions } from "@/redux";
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
-import { constants } from "@/networking";
+
+import { entities, constants } from "@/networking";
+import { useStoreActions } from "@/redux";
 
 export interface StoreFrontProps {
   containerStyle?: CSSProperties;
 }
 
-interface CartItem extends Product {
+interface CartItem extends entities.Product {
   count: number;
 }
 
@@ -58,7 +58,7 @@ const _StoreFront: FC<StoreFrontProps> = ({ containerStyle }) => {
   ]);
 
   const renderProducts = useCallback(
-    (product: Product, index: number) => (
+    (product: entities.Product, index: number) => (
       <ProductCard
         key={`${product.id}-${index}`}
         {...product}

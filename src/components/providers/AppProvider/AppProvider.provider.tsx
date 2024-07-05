@@ -4,9 +4,9 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 
 import { theme } from "@/styles/theme";
 import { store } from "@/redux";
-import { AppWrapper } from "./utilities/AppWrapper";
 import { NetworkProvider } from "@/networking";
-import { ErrorBoundary } from "./utilities/ErrorBoundary";
+
+import { AppWrapper, ErrorBoundary } from "./utilities";
 
 interface AppProviderProps {
   children: ReactNode;
