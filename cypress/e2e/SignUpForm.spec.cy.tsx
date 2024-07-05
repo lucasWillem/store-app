@@ -1,4 +1,4 @@
-import { WaitTimes } from "cypress/constants";
+import { WaitTimes } from "cypress/types";
 
 const newUserEmail = "new.user@email.com";
 const existingUserEmail = "existing.user@email.com";
