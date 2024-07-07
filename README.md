@@ -68,9 +68,9 @@ While I recognize the value of Test-Driven Development (TDD), time constraints p
 
 Additionally, GitHub Actions is utilized for continuous integration, running these tests before merging PRs into the dev or master branches.
 
-## Run Automated Tests Locally
+### Run Automated Tests Locally
 
-- **yarn cypress:run:component**: This command will run component tests and unit tests for hand evaluators.
+- **yarn cypress:run:component**: This command will run component tests.
 
 - **yarn cypress:run:e2e**: This command runs end-to-end (e2e) tests.
 
@@ -125,17 +125,17 @@ The Store app adopts the Atomic Design methodology, a powerful approach to const
 
 - **Pages**: Pages are specific instances of templates that show what a UI looks like with real representative content in place.
 
-By adhering to the Atomic Design principles, the Store app ensures consistency, scalability, and modularity. This structured approach allows our team to efficiently design, develop, and maintain a cohesive and predictable user interface.
+By adhering to the Atomic Design principles, the Store app ensures consistency, scalability, and modularity.
 
 ## Optimization in the Store App
 
-To enhance the performance and efficiency of the Store app, we've implemented several optimization techniques, focusing on minimizing unnecessary re-renders and computations.
+To enhance the performance and efficiency of the Store app, several optimization techniques we implemented, focusing on minimizing unnecessary re-renders and computations.
 
 - **`useCallback` Hook**: This hook is used to memoize callback functions. In the Store app, `useCallback` is strategically applied to functions passed as props or used in event handlers, particularly in components that undergo frequent re-renders. This prevents the creation of a new function instance on every render, thus reducing the likelihood of unnecessary child component re-renders.
 
-- **`useMemo` Hook**: This hook ensures that computational functions are only re-executed when one of their dependencies has changed. By implementing `useMemo`, an app avoids costly recalculations, enhancing performance.
+- **`useMemo` Hook**: This hook ensures that computational functions are only re-executed when one of their dependencies has changed. By implementing `useMemo`, an app avoids costly recalculations, enhancing performance.  It should also be implemented when objects or arrays are passed in as props, or referenced in dependency arrays, to prevent the creation of a new instance on every re-render.
 
-- **Pure Components**: The Store app leverages Pure Components to prevent unnecessary re-renders. Pure Components shallowly compare the current props and state with the next ones and re-render only if there are actual changes.
+- **Pure Components**: The Store app leverages Pure Components to prevent unnecessary re-renders. Pure Components shallowly compare the current props and state with the next ones and re-render only if there are actual changes.  This should be used in conjunction with useMemo and useCallback.
 
 ## Use of Index Files for Encapsulation
 
@@ -174,3 +174,21 @@ Implementing responsive design ensures that the Store app project is accessible 
 ### Error Boundary
 
 - **Robust Error Handling:** Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. They provide a more graceful error-handling mechanism by isolating faulty components and preventing the entire application from crashing.
+
+### AppWrapper Component
+
+The `AppWrapper` component serves as a foundational element designed to streamline the management of global UI elements such as loaders and alerts. By encapsulating the entire application's UI structure, it ensures a consistent and efficient way to handle common UI behaviors and states.
+
+- **Centralized UI Management**: Incorporates a `Loader` and `CustomAlert` component, which are managed centrally through the `AppWrapper`. This eliminates the need for multiple instances or local state management of these components, simplifying the overall UI logic.
+
+### PageWrapper Component
+
+The `PageWrapper` component is designed to provide a consistent and flexible layout structure for the pages. It serves as a versatile wrapper that can be customized to meet various layout and styling needs, ensuring a uniform look and feel across the application while offering the flexibility to adjust individual page designs as required.
+
+### CSSBaseline Integration
+
+The integration of `CSSBaseline` into the Store app plays a crucial role in establishing a consistent baseline for styling across all browsers. This component, provided by Material-UI, effectively normalizes the default browser styles, ensuring that our application's appearance remains consistent and predictable no matter the user's browser choice.
+
+### Enhanced Codebase Documentation with TypeScript Docs
+
+I have integrated TypeScript documentation comments throughout the project. This aims to provide developers with clear, concise, and comprehensive insights into the functionality, usage, and behavior of the various elements of code base.
