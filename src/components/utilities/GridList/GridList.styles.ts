@@ -1,6 +1,6 @@
 import { styled, Box, Theme } from "@mui/material";
 
-const StyledFlatList = styled(Box)<{ theme?: Theme }>(({ theme }) => ({
+const StyledGridList = styled(Box)<{ theme?: Theme }>(({ theme }) => ({
   maxWidth: "85vw",
   maxHeight: "90vh",
   display: "grid",
@@ -30,4 +30,4 @@ const StyledFlatList = styled(Box)<{ theme?: Theme }>(({ theme }) => ({
   },
 }));
 
-export { StyledFlatList };
+export { StyledGridList };
