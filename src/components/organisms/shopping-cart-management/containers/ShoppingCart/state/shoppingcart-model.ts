@@ -21,6 +21,29 @@ export interface ShoppingCartModel {
   addCartItem: Action<ShoppingCartModel, CartItem>;
 }
 
+/**
+ * Defines the model for a shopping cart using the Easy Peasy state management library.
+ * This model includes actions for adding and removing items from the cart.
+ *
+ * Interfaces:
+ * - `CartItem`: Represents an individual item in the shopping cart, including its id, title,
+ *   price, description, category, image, rating, and count (quantity).
+ * - `ProductRating`: Represents the rating of a product, including the rate and count of reviews.
+ * - `ShoppingCartModel`: Defines the structure of the shopping cart model, including the list of cart items
+ *   and actions for modifying the cart contents.
+ *
+ * The `shoppingCartModel` object:
+ * - `cartItems`: An array of `CartItem` objects representing the items currently in the cart.
+ * - `removeCartItem`: An action to remove an item from the cart or decrement its count. It takes the item's id as a payload.
+ *   If the item's count after decrementing is zero or less, the item is removed from the cart.
+ * - `addCartItem`: An action to add an item to the cart or increment its count if it already exists. It takes a `CartItem` object as a payload.
+ *   If the item already exists in the cart, its count is incremented. Otherwise, the item is added to the cart with a count of 1.
+ *
+ * Usage:
+ * - Import the `shoppingCartModel` into your store configuration.
+ * - Access and modify the cart's state using the provided actions within your application's components.
+ */
+
 const shoppingCartModel: ShoppingCartModel = {
   cartItems: [],
   removeCartItem: action((state, payload) => {
