@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import { useFetchProducts } from "./network-hooks/useFetchProducts";
 
 import { ProductCard } from "@/components/molecules/ProductCard";
-import { Grid } from "@/components/utilities/Grid";
+import { GridList } from "@/components/utilities/GridList";
 import { AlertSeverity } from "@/components/molecules/CustomAlert/state/alert-model";
 
 import { entities, constants } from "@/networking";
@@ -77,7 +77,7 @@ const _StoreFront: FC<StoreFrontProps> = ({ containerStyle }) => {
 
   return (
     <Box style={containerStyle}>
-      <Grid items={productsData ?? []} renderItem={renderProducts} />
+      <GridList items={productsData ?? []} renderItem={renderProducts} />
     </Box>
   );
 };
