@@ -1,4 +1,11 @@
-import { styled, List, Theme, ListItemText } from "@mui/material";
+import {
+  styled,
+  List,
+  Theme,
+  ListItemText,
+  Box,
+  Typography,
+} from "@mui/material";
 
 const StyledDrawerList = styled(List)<{ theme?: Theme }>(({ theme }) => ({
   display: "flex",
@@ -30,4 +37,20 @@ const StyledListItemText = styled(ListItemText)<{ theme?: Theme }>(
   }),
 );
 
-export { StyledDrawerList, StyledListItemText };
+const StyledActionSection = styled(Box)<{ theme?: Theme }>(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(1),
+}));
+
+const StyledPrice = styled(Typography)<{ theme?: Theme }>(({ theme }) => ({
+  textAlign: "end",
+  paddingRight: theme.spacing(2),
+}));
+
+export {
+  StyledDrawerList,
+  StyledListItemText,
+  StyledActionSection,
+  StyledPrice,
+};
