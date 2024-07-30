@@ -6,3 +6,9 @@
  */
 export const generateRandomNumber = (limit: number): number =>
   Math.floor(Math.random() * limit);
+
+export const getFormattedCurrencyString = (totalPrice: string) =>
+  parseFloat(totalPrice).toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
