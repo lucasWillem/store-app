@@ -19,6 +19,7 @@ export interface ShoppingCartModel {
   cartItems: CartItem[];
   removeCartItem: Action<ShoppingCartModel, number>;
   addCartItem: Action<ShoppingCartModel, CartItem>;
+  clearCart: Action<ShoppingCartModel>;
 }
 
 /**
@@ -73,6 +74,9 @@ const shoppingCartModel: ShoppingCartModel = {
       // Item does not exist, add it to the cart with count 1
       state.cartItems.push({ ...payload, count: 1 });
     }
+  }),
+  clearCart: action((state) => {
+    state.cartItems = [];
   }),
 };
 
