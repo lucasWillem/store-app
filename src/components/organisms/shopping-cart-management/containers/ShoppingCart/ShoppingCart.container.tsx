@@ -111,7 +111,9 @@ const _ShoppingCart: FC<ShoppingCartProps> = ({ containerStyle }) => {
     .reduce((total, item) => total + item.price * item.count, 0)
     .toFixed(2);
 
-  const formattedTotalPrice = utils.getFormattedCurrencyString(totalPrice);
+  const formattedTotalPrice = utils.getFormattedCurrencyString({
+    value: totalPrice,
+  });
 
   return (
     <Box style={containerStyle}>
